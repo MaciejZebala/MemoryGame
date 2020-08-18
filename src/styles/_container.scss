@@ -1,0 +1,12 @@
+.game__container{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
+    margin: 50px;
+    justify-content: center;
+}
+.card{
+    width: 115px;
+    height: 140px;
+    background-color: #b700ff;
+}

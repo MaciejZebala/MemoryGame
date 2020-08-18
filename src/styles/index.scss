@@ -1,0 +1,20 @@
+@font-face{
+  font-family: 'SuperLegendBoy';
+  src: url(../fonts/SuperLegendBoy-4w8Y.ttf);
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+@import 'variables';
+@import'header';
+@import'wrapper';
+@import'container';
+
+html{
+  min-height: 100vh;
+}
+
+body{
+  background: -webkit-radial-gradient(#8a00ff, #200589);
+}
+

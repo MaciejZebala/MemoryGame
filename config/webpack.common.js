@@ -42,8 +42,8 @@ module.exports = {
      */
     new CopyWebpackPlugin([
       {
-        from: paths.static,
-        to: 'assets',
+        from: 'src/images',
+        to: 'images',
         ignore: ['*.DS_Store'],
       },
     ]),
@@ -54,8 +54,8 @@ module.exports = {
      * Generates an HTML file from a template.
      */
     new HtmlWebpackPlugin({
-      title: 'Webpack Boilerplate',
-      favicon: paths.static + '/favicon.png',
+      title: 'MemoryGame',
+      favicon: paths.static + '/brain.png',
       template: paths.src + '/template.html', // template file
       filename: 'index.html', // output file
     }),
