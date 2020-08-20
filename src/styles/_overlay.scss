@@ -5,17 +5,22 @@
     left: 0;
     right: 0;
     bottom: 0;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     color: #f500ff;
     font-family: $font-family, serif;
+
+    &__btn{
+        font-size: 2rem;
+        cursor: pointer;
+    }
 }
 
-.overlay-text--start-visible{
+.overlay-text--visible{
     display: flex;
     animation: overlay-grow .5s forwards;
-    cursor: pointer;
 }
 
 @keyframes overlay-grow {
