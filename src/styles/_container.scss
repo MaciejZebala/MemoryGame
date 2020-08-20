@@ -6,6 +6,7 @@
     justify-content: center;
     perspective: 500px;
 }
+
 .card{
     position: relative;
     width: 115px;
@@ -28,8 +29,12 @@
         &--front{
             background-color: #200589;
             border: 1.7px solid #f500ff;
-            // transform: scale(1);
-            // transition: .2s ease-in-out;
+        }
+
+        &--front:hover{
+            .card__img{
+                transform: scale(1.1);
+            }
         }
 
         &--back{
@@ -45,7 +50,7 @@
     }
 }
 
-.card:hover {
+.card--active {
 
     .card__side--front{
         transform: rotateY(-180deg);
