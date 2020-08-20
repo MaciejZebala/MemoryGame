@@ -13,8 +13,9 @@
     font-family: $font-family, serif;
 
     &__btn{
-        font-size: 2rem;
+        font-size: 1.7rem;
         cursor: pointer;
+        margin-top: 10px;
     }
 }
 
@@ -31,6 +32,6 @@
 
     to {
         background-color: rgba(0, 0, 0, .8);
-        font-size: 4.2rem;
+        font-size: 4.4rem;
     }
 }
