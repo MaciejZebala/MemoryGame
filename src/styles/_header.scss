@@ -3,7 +3,9 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 25%;
+    min-height: 25%;
+    margin-bottom: 40px;
+    font-family: $font-family, serif;
     color: $font-color;
 
     &__title {
@@ -14,11 +16,23 @@
 
     &__game-info {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         font-size: $font-size-info;
         margin-top: 10px;
     }
+    @media (max-width: 640px) {
+        &__game-info{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 }
+
+    @media (max-width: 640px) {
+        .game-info {
+           margin-top: 10px;
+        }
+    }
 
 .game-options {
     display: flex;

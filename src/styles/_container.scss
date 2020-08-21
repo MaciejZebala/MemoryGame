@@ -7,6 +7,12 @@
     perspective: 500px;
 }
 
+@media (max-width: 640px){
+    .game__container{
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
 .card{
     position: relative;
     width: $card-widgt;
