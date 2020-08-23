@@ -56,7 +56,7 @@
     }
 }
 
-.card--active {
+.card:hover {
 
     .card__side--front{
         transform: rotateY(-180deg);
