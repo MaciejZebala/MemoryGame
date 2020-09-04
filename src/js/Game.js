@@ -1,16 +1,21 @@
 import Mix from "./Mix";
 import AudioController from "./AudioController";
+import BackgroundFunction from "./BackgroundFunction";
+import Results from "./Results";
 
 export default class Game {
-    constructor(){
+    constructor(totalTime){
         this.overlays = document.querySelectorAll('.overlay-text');
         this.cards = document.querySelectorAll('.card');
         this.flipCounter = document.querySelector('.game-info__flips');
+        this.timeCounter = document.querySelector('.game-info__time');
         this.imgBtn = document.querySelector('.btn__img--audio');
         this.muteBtn = document.querySelector('.btn--audio');
-        this.muteBtn.addEventListener('click', this.muteMusic.bind(this))
+        this.muteBtn.addEventListener('click', this.muteMusic.bind(this));
+        this.totalTime = totalTime;
         this.mix = new Mix();
         this.audio = new AudioController();
+        this.results = new Results();
     }
 
     muteMusic(){
@@ -32,10 +37,27 @@ export default class Game {
         this.flipCounter.textContent = this.totalClick;
     }
 
+    timer() {
+        const timerCountdown = setInterval(() => {
+            this.timeRemainig--;
+            this.timeCounter.textContent = this.timeRemainig;
+            if (this.timeRemainig === 0) {
+                this.results.gameOverFunction(timerCountdown, this.audio.gameOver())
+            }
+        }, 1000);
+    }
+
+
     startGame(){
-        this.mix.shuffleCards();
         this.totalClick = 0;
-        this.audio.startMusic();
+        this.timeRemainig = this.totalTime;
+        setTimeout(() => {
+            this.audio.startMusic();
+            this.mix.shuffleCards();
+            this.timer();
+        }, 500);
+        this.flipCounter.textContent = this.totalClick;
+        this.timeCounter.textContent = this.timeRemainig;
     }
 
     render(){
