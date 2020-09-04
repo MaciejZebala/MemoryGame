@@ -1,6 +1,6 @@
 import './styles/index.scss'
 
-import './js/Audio'
+import './js/AudioController'
 import './js/Results'
 import './js/Mix'
 import './js/Match'

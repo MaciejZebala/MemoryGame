@@ -16,13 +16,5 @@ export default class Mix {
             shuffleCardsArray.push(this.cardsArray[randIndex]);
             this.cardsArray.splice(randIndex, 1);
         })
-                    console.log(shuffleCardsArray);
-                    console.log(this.cardsArray)
-        // console.log(this.cardsArray.length)
-        // for(let i = 0; i < this.cardsArray.length - 1; i++) {
-        //     let randIndex = Math.floor(Math.random() * this.cardsArray.length);
-            
-        //     this.cardsArray.splice(randIndex, 1);
-        // }
     }
 }

@@ -108,6 +108,15 @@ module.exports = {
         },
       },
 
+      {
+        test: /\.(mp3|wav)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[txt]',
+          context: 'src',
+        }
+      },
+
       /**
        * Fonts
        *
