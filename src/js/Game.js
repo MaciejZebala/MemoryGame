@@ -1,6 +1,5 @@
 import Mix from "./Mix";
 import AudioController from "./AudioController";
-import BackgroundFunction from "./BackgroundFunction";
 import Results from "./Results";
 
 export default class Game {
@@ -35,6 +34,7 @@ export default class Game {
         this.audio.flip();
         this.totalClick++;
         this.flipCounter.textContent = this.totalClick;
+        this.getCardType(card);
     }
 
     timer() {
@@ -45,6 +45,10 @@ export default class Game {
                 this.results.gameOverFunction(timerCountdown, this.audio.gameOver())
             }
         }, 1000);
+    }
+
+    getCardType(card){
+        return card.getElementsByClassName('card__img--back')[0].src;
     }
 
 
