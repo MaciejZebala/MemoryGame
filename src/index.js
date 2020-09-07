@@ -7,7 +7,7 @@ import './js/Match'
 import './js/Results'
 import Game from './js/Game'
 
-const game = new Game(10);
+const game = new Game(100);
 
 game.render();
 

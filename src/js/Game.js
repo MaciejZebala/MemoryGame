@@ -1,6 +1,7 @@
 import Mix from "./Mix";
 import AudioController from "./AudioController";
 import Results from "./Results";
+import Match from "./Match";
 
 export default class Game {
     constructor(totalTime){
@@ -15,6 +16,7 @@ export default class Game {
         this.mix = new Mix();
         this.audio = new AudioController();
         this.results = new Results();
+        this.match = new Match();
     }
 
     muteMusic(){
@@ -34,7 +36,11 @@ export default class Game {
         this.audio.flip();
         this.totalClick++;
         this.flipCounter.textContent = this.totalClick;
-        this.getCardType(card);
+        if(this.match.cardToCheck){
+            this.match.checkCardForMatch(card)
+        } else {
+            this.match.cardToCheck = card;
+        }
     }
 
     timer() {
@@ -47,14 +53,10 @@ export default class Game {
         }, 1000);
     }
 
-    getCardType(card){
-        return card.getElementsByClassName('card__img--back')[0].src;
-    }
-
-
     startGame(){
         this.totalClick = 0;
         this.timeRemainig = this.totalTime;
+        this.match.cardToCheck = null;
         setTimeout(() => {
             this.audio.startMusic();
             this.mix.shuffleCards();
