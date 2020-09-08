@@ -32,15 +32,21 @@ export default class Game {
     }
 
     flipCard(card){
-        card.classList.add('card--active')
-        this.audio.flip();
-        this.totalClick++;
-        this.flipCounter.textContent = this.totalClick;
-        if(this.match.cardToCheck){
-            this.match.checkCardForMatch(card)
-        } else {
-            this.match.cardToCheck = card;
+        if(this.canFlipCard(card)){
+            card.classList.add('card--active')
+            this.audio.flip();
+            this.totalClick++;
+            this.flipCounter.textContent = this.totalClick;
+            if (this.match.cardToCheck) {
+                this.match.checkCardForMatch(card)
+            } else {
+                this.match.cardToCheck = card;
+            }
         }
+    }
+
+    canFlipCard(card){
+        return !this.match.busy && !this.match.matchedCards.includes(card) && card !== this.match.cardToCheck;
     }
 
     timer() {
@@ -57,11 +63,13 @@ export default class Game {
         this.totalClick = 0;
         this.timeRemainig = this.totalTime;
         this.match.cardToCheck = null;
+        this.match.busy = true;
         setTimeout(() => {
             this.audio.startMusic();
             this.mix.shuffleCards();
             this.timer();
-        }, 500);
+            this.match.busy = false;
+        }, 700);
         this.flipCounter.textContent = this.totalClick;
         this.timeCounter.textContent = this.timeRemainig;
     }

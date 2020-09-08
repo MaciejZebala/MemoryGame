@@ -1,8 +1,10 @@
+import AudioController from "./AudioController";
 export default class Match {
     constructor(){
         this.matchedCards = [];
         this.cardToCheck = null;
-
+        this.busy;
+        this.audioController = new AudioController();
     }
     checkCardForMatch(card){
         if(this.getCardType(card)===this.getCardType(this.cardToCheck)){
@@ -20,14 +22,17 @@ export default class Match {
     cardMatch(card1, card2){
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
+        this.audioController.match();
         console.log(this.matchedCards)
     }
 
     cardMissMatch(card1, card2){
+        this.busy = true;
         setTimeout(()=>{
             card1.classList.remove('card--active');
             card2.classList.remove('card--active');
-        },700)
+            this.busy = false;
+        },1000)
         
     }
 
