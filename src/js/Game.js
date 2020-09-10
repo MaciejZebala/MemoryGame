@@ -56,13 +56,23 @@ export default class Game {
             if (this.timeRemainig === 0) {
                 this.results.gameOverFunction(timerCountdown, this.audio.gameOver())
             }
+            if (this.match.matchedCards.length === this.cards.length) {
+                this.results.victoryFunction(timerCountdown, this.audio.victory())
+            }
         }, 1000);
+    }
+
+    hideCards() {
+            this.cards.forEach((card) => {
+                card.classList.remove('card--active');
+            })
     }
 
     startGame(){
         this.totalClick = 0;
         this.timeRemainig = this.totalTime;
         this.match.cardToCheck = null;
+        this.match.matchedCards = [];
         this.match.busy = true;
         setTimeout(() => {
             this.audio.startMusic();
@@ -70,6 +80,7 @@ export default class Game {
             this.timer();
             this.match.busy = false;
         }, 700);
+        this.hideCards();
         this.flipCounter.textContent = this.totalClick;
         this.timeCounter.textContent = this.timeRemainig;
     }
@@ -86,5 +97,5 @@ export default class Game {
                 this.flipCard(card);
             })
         })
-}
+    }
 }

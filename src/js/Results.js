@@ -8,4 +8,10 @@ export default class Results {
         music;
         this.gameOverOverlay.classList.add('overlay-text--visible');
     }
+
+    victoryFunction(timer, music) {
+        clearInterval(timer);
+        music;
+        document.getElementById('victory-game-text').classList.add('overlay-text--visible');
+    }
 }

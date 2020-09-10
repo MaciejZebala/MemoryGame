@@ -23,7 +23,6 @@ export default class Match {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         this.audioController.match();
-        console.log(this.matchedCards)
     }
 
     cardMissMatch(card1, card2){
