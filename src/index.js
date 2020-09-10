@@ -8,7 +8,7 @@ import './js/Results'
 import  DataBase from'./js/DataBase'
 import Game from './js/Game'
 
-const game = new Game(100);
+const game = new Game(10);
 
 const dateBase = new DataBase();
 

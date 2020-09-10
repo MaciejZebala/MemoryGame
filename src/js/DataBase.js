@@ -14,10 +14,16 @@ export default class DataBase{
         };
 
         this.firebase = firebase;
+
+        this.nickName = document.getElementById('nickname')
     }
 
     runFirebase(){
         this.firebase.initializeApp(this.firebaseConfig)
         console.log(this.firebase);
+    }
+
+    showNickName(){
+        console.log(this.nickName.value);
     }
 }

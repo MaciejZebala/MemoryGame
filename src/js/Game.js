@@ -7,6 +7,7 @@ import DataBase from "./DataBase";
 export default class Game {
     constructor(totalTime){
         this.overlays = document.querySelectorAll('.overlay-text');
+        this.overlaysBtn = document.querySelectorAll('.overlay-text__btn');
         this.cards = document.querySelectorAll('.card');
         this.flipCounter = document.querySelector('.game-info__flips');
         this.timeCounter = document.querySelector('.game-info__time');
@@ -18,6 +19,7 @@ export default class Game {
         this.audio = new AudioController();
         this.results = new Results();
         this.match = new Match();
+        this.dateBase = new DataBase();
     }
 
     muteMusic(){
@@ -75,6 +77,7 @@ export default class Game {
         this.match.cardToCheck = null;
         this.match.matchedCards = [];
         this.match.busy = true;
+        this.dateBase.showNickName();
         setTimeout(() => {
             this.audio.startMusic();
             this.mix.shuffleCards();
@@ -87,9 +90,11 @@ export default class Game {
     }
 
     render(){
-        this.overlays.forEach(overlay => {
-            overlay.addEventListener('click', ()=>{
-                overlay.classList.remove('overlay-text--visible');
+        this.overlaysBtn.forEach(btn => {
+            btn.addEventListener('click', ()=>{
+                this.overlays.forEach((overlay)=>{
+                    overlay.classList.remove('overlay-text--visible');
+                })
                 this.startGame();
             })
         })
