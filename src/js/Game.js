@@ -2,6 +2,7 @@ import Mix from "./Mix";
 import AudioController from "./AudioController";
 import Results from "./Results";
 import Match from "./Match";
+import DataBase from "./DataBase";
 
 export default class Game {
     constructor(totalTime){

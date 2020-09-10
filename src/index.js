@@ -5,9 +5,14 @@ import './js/Results'
 import './js/Mix'
 import './js/Match'
 import './js/Results'
+import  DataBase from'./js/DataBase'
 import Game from './js/Game'
 
 const game = new Game(100);
+
+const dateBase = new DataBase();
+
+dateBase.runFirebase(); 
 
 game.render();
 

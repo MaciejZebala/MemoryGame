@@ -33,6 +33,7 @@ export default class AudioController{
     }
 
     victory(){
+        this.stopMusic();
         this.victoryMusic.play();
     }
     gameOver(){
