@@ -1,18 +1,16 @@
 import './styles/index.scss'
 
+import 'firebase/database'
+
 import './js/AudioController'
 import './js/Results'
 import './js/Mix'
 import './js/Match'
 import './js/Results'
-import  DataBase from'./js/DataBase'
+import './js/DataBase'
 import Game from './js/Game'
 
-const game = new Game(10);
-
-const dateBase = new DataBase();
-
-dateBase.runFirebase(); 
+const game = new Game(50);
 
 game.render();
 

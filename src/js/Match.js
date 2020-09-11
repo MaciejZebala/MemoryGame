@@ -32,7 +32,5 @@ export default class Match {
             card2.classList.remove('card--active');
             this.busy = false;
         },1000)
-        
     }
-
 }

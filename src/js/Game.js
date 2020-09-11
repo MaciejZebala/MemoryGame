@@ -19,7 +19,6 @@ export default class Game {
         this.audio = new AudioController();
         this.results = new Results();
         this.match = new Match();
-        this.dateBase = new DataBase();
     }
 
     muteMusic(){
@@ -38,7 +37,7 @@ export default class Game {
         if(this.canFlipCard(card)){
             card.classList.add('card--active')
             this.audio.flip();
-            this.totalClick++;
+            this.totalClick--;
             this.flipCounter.textContent = this.totalClick;
             if (this.match.cardToCheck) {
                 this.match.checkCardForMatch(card)
@@ -46,23 +45,12 @@ export default class Game {
                 this.match.cardToCheck = card;
             }
         }
+        this.data = new DataBase(this.totalClick, this.timeRemainig);
     }
+
 
     canFlipCard(card){
         return !this.match.busy && !this.match.matchedCards.includes(card) && card !== this.match.cardToCheck;
-    }
-
-    timer() {
-        const timerCountdown = setInterval(() => {
-            this.timeRemainig--;
-            this.timeCounter.textContent = this.timeRemainig;
-            if (this.timeRemainig === 0) {
-                this.results.gameOverFunction(timerCountdown, this.audio.gameOver())
-            }
-            if (this.match.matchedCards.length === this.cards.length) {
-                this.results.victoryFunction(timerCountdown, this.audio.victory())
-            }
-        }, 1000);
     }
 
     hideCards() {
@@ -72,12 +60,11 @@ export default class Game {
     }
 
     startGame(){
-        this.totalClick = 0;
+        this.totalClick = 50;
         this.timeRemainig = this.totalTime;
         this.match.cardToCheck = null;
         this.match.matchedCards = [];
         this.match.busy = true;
-        this.dateBase.showNickName();
         setTimeout(() => {
             this.audio.startMusic();
             this.mix.shuffleCards();
@@ -87,6 +74,25 @@ export default class Game {
         this.hideCards();
         this.flipCounter.textContent = this.totalClick;
         this.timeCounter.textContent = this.timeRemainig;
+    }
+
+
+    timer() {
+        const timerCountdown = setInterval(() => {
+            this.timeRemainig--;
+            this.timeCounter.textContent = this.timeRemainig;
+            if (this.timeRemainig === 0) {
+                this.results.gameOverFunction(timerCountdown, this.audio.gameOver());
+            }
+            if(this.totalClick === 0){
+                this.results.gameOverFunction(timerCountdown, this.audio.gameOver());
+            }
+            if (this.match.matchedCards.length === this.cards.length) {
+                this.results.victoryFunction(timerCountdown, this.audio.victory())
+                this.data.showNickName();
+            }
+
+        }, 1000);
     }
 
     render(){
@@ -100,7 +106,7 @@ export default class Game {
         })
         this.cards.forEach(card=>{
             card.addEventListener('click', ()=>{
-                this.flipCard(card);
+                this.flipCard(card)
             })
         })
     }
