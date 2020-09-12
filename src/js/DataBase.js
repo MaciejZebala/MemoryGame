@@ -1,4 +1,5 @@
 import * as firebase from 'firebase/app'
+import 'firebase/firebase-firestore'
 
 export default class DataBase{
     constructor(totalClick, timeRemainig){
@@ -17,26 +18,31 @@ export default class DataBase{
         this.timeRemainig = timeRemainig;
 
         this.firebase = firebase;
-    
+        if (!this.firebase.apps.length) {
+            this.firebase.initializeApp(this.firebaseConfig)
+        }
+        this.dataBase = this.firebase.firestore();
         this.nickName = document.getElementById('nickname');
+
     }
 
 
     showNickName(){
 
-        if(!this.firebase.apps.length){
-            this.firebase.initializeApp(this.firebaseConfig)
-        }
-    
-        const dataBase = this.firebase.database();
-
-        const ref = dataBase.ref('scores');
-
-        this.data = {
+        this.dataBase.collection('scores').add({
             name: `${this.nickName.value}`,
-            score: (this.totalClick * (this.timeRemainig-1))
-        }
+            score: (this.totalClick * (this.timeRemainig - 1))
+        });
 
-        ref.push(this.data)
+    }
+
+    getData(){
+
+
+        this.dataBase.collection('scores').orderBy('score', "desc").get().then((snapshot)=>{
+            snapshot.docs.forEach((doc)=>{
+                console.log(doc.data());
+            })
+        })
     }
 }

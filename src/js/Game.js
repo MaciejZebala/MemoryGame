@@ -106,7 +106,7 @@ export default class Game {
         })
         this.cards.forEach(card=>{
             card.addEventListener('click', ()=>{
-                this.flipCard(card)
+                this.flipCard(card);
             })
         })
     }
