@@ -24,6 +24,60 @@
     animation: overlay-grow .5s forwards;
 }
 
+.score-list{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 15px 0;
+    width: 400px;
+    height: 600px;
+    list-style: none;
+    background-color: $background-color;
+    padding: 0;
+    &__item{
+        height: 10%;
+        font-size: 35px;
+        text-align: center;
+        margin-top: 10px;
+        &--podium{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        height: 30%;
+        margin-top: 0;
+        background-color: #001eff;
+        border-bottom: 2px solid #da00ff;
+        }
+    }
+    &__place{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        height: 80%;
+        flex-grow: 1;
+        font-size: 25px;
+        &--first{
+            align-self: flex-start;
+            margin: 5px 0 0 0;
+        }
+    }
+    &__nick{
+        margin-top: 10px;
+    }
+}
+
+.img__place{
+    width: 90px;
+    height: 100px;
+}
+
+.back-to-game-btn{
+    cursor: pointer;
+    font-size: 60px;
+}
+
+
+
 @keyframes overlay-grow {
     from {
         background-color: rgba(0, 0, 0, 0);

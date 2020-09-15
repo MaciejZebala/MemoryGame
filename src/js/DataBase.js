@@ -41,7 +41,6 @@ export default class DataBase{
 
         this.dataBase.collection('scores').orderBy('score', "desc").get().then((snapshot)=>{
             snapshot.docs.forEach((doc)=>{
-                console.log(doc.data());
             })
         })
     }

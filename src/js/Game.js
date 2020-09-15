@@ -13,6 +13,9 @@ export default class Game {
         this.timeCounter = document.querySelector('.game-info__time');
         this.imgBtn = document.querySelector('.btn__img--audio');
         this.muteBtn = document.querySelector('.btn--audio');
+        this.scoreBtn = document.querySelector('.btn--score');
+        this.scoreOverlay = document.getElementById('score-game-text');
+        this.backToGame = document.querySelector('.back-to-game-btn')
         this.muteBtn.addEventListener('click', this.muteMusic.bind(this));
         this.totalTime = totalTime;
         this.mix = new Mix();
@@ -70,7 +73,7 @@ export default class Game {
             this.mix.shuffleCards();
             this.timer();
             this.match.busy = false;
-        }, 700);
+        }, 500);
         this.hideCards();
         this.flipCounter.textContent = this.totalClick;
         this.timeCounter.textContent = this.timeRemainig;
@@ -78,17 +81,17 @@ export default class Game {
 
 
     timer() {
-        const timerCountdown = setInterval(() => {
+        this.timerCountdown = setInterval(() => {
             this.timeRemainig--;
             this.timeCounter.textContent = this.timeRemainig;
             if (this.timeRemainig === 0) {
-                this.results.gameOverFunction(timerCountdown, this.audio.gameOver());
+                this.results.gameOverFunction(this.timerCountdown, this.audio.gameOver());
             }
             if(this.totalClick === 0){
-                this.results.gameOverFunction(timerCountdown, this.audio.gameOver());
+                this.results.gameOverFunction(this.timerCountdown, this.audio.gameOver());
             }
             if (this.match.matchedCards.length === this.cards.length) {
-                this.results.victoryFunction(timerCountdown, this.audio.victory())
+                this.results.victoryFunction(this.timerCountdown, this.audio.victory())
                 this.data.showNickName();
             }
 
@@ -108,6 +111,16 @@ export default class Game {
             card.addEventListener('click', ()=>{
                 this.flipCard(card);
             })
+        })
+        this.scoreBtn.addEventListener('click',()=>{
+            this.scoreOverlay.classList.add('overlay-text--visible');
+            clearInterval(this.timerCountdown);
+            this.audio.pauseMusic();
+        })
+        this.backToGame.addEventListener('click', ()=>{
+            this.scoreOverlay.classList.remove('overlay-text--visible');
+            this.timer();
+            this.audio.startMusic();
         })
     }
 }

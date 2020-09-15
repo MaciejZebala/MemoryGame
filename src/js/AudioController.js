@@ -40,4 +40,7 @@ export default class AudioController{
         this.stopMusic();
         this.gameOverMusic.play();
     }
+    pauseMusic(){
+        this.bgMusic.pause();
+    }
 }
