@@ -130,16 +130,35 @@
     </div>
   </div>
   <div class="overlay-text overlay-text--visible">
-    <input type="text" id="nickname">
+    <input type="text" class="overlay-text__nickname" id="nickname">
     <button class="overlay-text__btn">Click to Start</button>
   </div>
   <div id="game-over-text"class="overlay-text">
-    GAME OVER
-    <span class="overlay-text__btn">Click to Restart</span>
+    <span class="overlay-text__last">GAME OVER</span>
+    <button class="overlay-text__btn">Click to Restart</button>
   </div>
   <div id="victory-game-text" class="overlay-text">
-    VICTORY
-    <span class="overlay-text__btn">Click to Restart</span>
+    <span class="overlay-text__last">VICTORY</span>
+    <ul class="score-list">
+      <li class="score-list__item score-list__item--podium">
+        <div class="score-list__place score-list__place--second">
+          <img src="./images/second.svg" alt="" class="img__place">
+          <span class="score-list__nick">Macius</span>
+        </div>
+    
+        <div class="score-list__place score-list__place--first">
+          <img src="./images/first.svg" alt="" class="img__place">
+          <span class="score-list__nick">Macius</span>
+        </div>
+    
+        <div class="score-list__place score-list__place--thrid">
+          <img src="./images/thrid.svg" alt="" class="img__place">
+          <span class="score-list__nick">Macius</span>
+        </div>
+      </li>
+      <li class="score-list__item">2. Kubus</li>
+    </ul>
+    <button class="overlay-text__btn">Click to Restart</button>
   </div>
   <div id="score-game-text" class="overlay-text">
     <ul class="score-list">
@@ -161,7 +180,8 @@
       </li>
       <li class="score-list__item">2. Kubus</li>
     </ul>
-    <span class="back-to-game-btn">Back to game</span>
+    <button class="back-to-game-btn">Back to game</button>
+    <!-- <span class="back-to-game-btn">Back to game</span> -->
   </div>
 </body>
 

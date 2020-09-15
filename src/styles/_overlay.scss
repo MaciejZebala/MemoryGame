@@ -1,4 +1,4 @@
-.overlay-text{
+.overlay-text {
     display: none;
     position: fixed;
     top: 0;
@@ -12,68 +12,88 @@
     color: $font-color;
     font-family: $font-family, serif;
 
-    &__btn{
-        font-size: 1.7rem;
+    &__btn {
+        font-size: 2.2rem;
+        color: $font-color;
         cursor: pointer;
         margin-top: 10px;
+        background-color: transparent;
+        border: none;
     }
+
+    &__last {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+    }
+
 }
 
-.overlay-text--visible{
+.overlay-text--visible {
     display: flex;
+
     animation: overlay-grow .5s forwards;
 }
 
-.score-list{
+.score-list {
     display: flex;
     flex-direction: column;
-    margin: 0 0 15px 0;
+    margin: 0 0 5px 0;
     width: 400px;
-    height: 600px;
+    height: 550px;
     list-style: none;
     background-color: $background-color;
     padding: 0;
-    &__item{
+
+    &__item {
         height: 10%;
-        font-size: 35px;
-        text-align: center;
-        margin-top: 10px;
-        &--podium{
+        font-size: 1.6rem;
         display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        height: 30%;
-        margin-top: 0;
-        background-color: #001eff;
-        border-bottom: 2px solid #da00ff;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+
+        &--podium {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            height: 30%;
+            margin-top: 0;
+            background-color: #001eff;
+            border-bottom: 2px solid #da00ff;
         }
     }
-    &__place{
+
+    &__place {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 10px;
         height: 80%;
         flex-grow: 1;
-        font-size: 25px;
-        &--first{
+        font-size: 1.3rem;
+
+        &--first {
             align-self: flex-start;
             margin: 5px 0 0 0;
         }
     }
-    &__nick{
+
+    &__nick {
         margin-top: 10px;
     }
 }
 
-.img__place{
+.img__place {
     width: 90px;
     height: 100px;
 }
 
-.back-to-game-btn{
+.back-to-game-btn {
+    color: $font-color;
     cursor: pointer;
     font-size: 60px;
+    background-color: transparent;
+    border: none;
 }
 
 
