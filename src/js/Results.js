@@ -16,8 +16,8 @@ export default class Results {
     victoryFunction(timer, music) {
         clearInterval(timer);
         music;
-        this.victoryOverlay.appendChild(this.scoreList);
+        this.cloneScoreList = this.scoreList.cloneNode(true);
+        this.victoryOverlay.appendChild(this.cloneScoreList);
         this.victoryOverlay.classList.add('overlay-text--visible');
-        // document.getElementById('victory-game-text').appendChild(this.scoreList).classList.add('overlay-text--visible');
     }
 }

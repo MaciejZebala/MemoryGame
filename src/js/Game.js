@@ -23,6 +23,7 @@ export default class Game {
         this.results = new Results();
         this.match = new Match();
         this.data = new DataBase();
+        this.nickName = document.getElementById('nickname');
     }
 
     muteMusic(){
@@ -106,11 +107,18 @@ export default class Game {
 
     render(){
         this.overlaysBtn.forEach(btn => {
-            btn.addEventListener('click', ()=>{
-                this.overlays.forEach((overlay)=>{
-                    overlay.classList.remove('overlay-text--visible');
-                })
-                this.startGame();
+            btn.addEventListener('click', (e) => {
+                e.preventDefault()
+                if(this.nickName.value.length === 0){
+                    alert('Give me nickname')
+                } else if(this.nickName.value.length > 8){
+                    alert('give me nickname shorter then 9')
+                } else {
+                    this.overlays.forEach((overlay) => {
+                        overlay.classList.remove('overlay-text--visible');
+                    })
+                    this.startGame();
+                }
             })
         })
         this.cards.forEach(card=>{
