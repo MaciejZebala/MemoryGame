@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 0 5px 0;
-    width: 400px;
+    width: 420px;
     height: 550px;
     list-style: none;
     background-color: $background-color;
@@ -46,17 +46,17 @@
 
     &__item {
         height: 10%;
-        font-size: 1.6rem;
+        font-size: 1.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 2px;
 
         &--podium {
             display: flex;
             flex-direction: row;
             align-items: flex-end;
-            height: 30%;
+            height: 40%;
             margin-top: 0;
             background-color: #001eff;
             border-bottom: 2px solid #da00ff;
@@ -73,9 +73,21 @@
         font-size: 1.3rem;
 
         &--first {
+            order: 1;
             align-self: flex-start;
             margin: 5px 0 0 0;
         }
+        &--second{
+            order: 0;
+        }
+        &--third{
+            order: 2;
+        }
+    }
+
+    &__points{
+        margin-top: 3px;
+        font-size: 1.1rem;
     }
 
     &__nick {

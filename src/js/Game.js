@@ -22,6 +22,7 @@ export default class Game {
         this.audio = new AudioController();
         this.results = new Results();
         this.match = new Match();
+        this.data = new DataBase();
     }
 
     muteMusic(){
@@ -73,6 +74,11 @@ export default class Game {
             this.mix.shuffleCards();
             this.timer();
             this.match.busy = false;
+            this.scoreBtn.addEventListener('click', () => {
+                this.scoreOverlay.classList.add('overlay-text--visible');
+                clearInterval(this.timerCountdown);
+                this.audio.pauseMusic();
+            })
         }, 500);
         this.hideCards();
         this.flipCounter.textContent = this.totalClick;
@@ -111,11 +117,6 @@ export default class Game {
             card.addEventListener('click', ()=>{
                 this.flipCard(card);
             })
-        })
-        this.scoreBtn.addEventListener('click',()=>{
-            this.scoreOverlay.classList.add('overlay-text--visible');
-            clearInterval(this.timerCountdown);
-            this.audio.pauseMusic();
         })
         this.backToGame.addEventListener('click', ()=>{
             this.scoreOverlay.classList.remove('overlay-text--visible');
