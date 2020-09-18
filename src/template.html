@@ -130,8 +130,13 @@
     </div>
   </div>
   <div class="overlay-text overlay-text--visible">
-    <form action="">
-    <input type="text" class="overlay-text__nickname" id="nickname">
+    <form action="" class="overlay-text__form">
+    <div class="overlay-text__form-wraper">
+    <input type="text" class="overlay-text__nickname" id="nickname" required autocomplete="off">
+    <label for="name" class="overlay-text__label">
+      <span class="overlay-text__name">Name</span>
+    </label>
+    </div>
     <button class="overlay-text__btn">Click to Start</button>
     </form>
   </div>

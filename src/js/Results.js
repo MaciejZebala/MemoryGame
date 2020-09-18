@@ -17,7 +17,7 @@ export default class Results {
         clearInterval(timer);
         music;
         this.cloneScoreList = this.scoreList.cloneNode(true);
-        this.victoryOverlay.appendChild(this.cloneScoreList);
+        this.victoryOverlay.insertBefore(this.cloneScoreList, this.victoryOverlay.children[1]);
         this.victoryOverlay.classList.add('overlay-text--visible');
     }
 }
