@@ -28,7 +28,7 @@ export default class Game {
 
     muteMusic(){
         if (this.muteBtn.classList.contains("btn--audio-on")) {
-            this.audio.stopMusic();
+            this.audio.pauseMusic();
             this.muteBtn.classList.remove('btn--audio-on');
             this.imgBtn.setAttribute("src", `./images/sound.svg`);
         } else{
