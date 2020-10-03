@@ -17,7 +17,11 @@ export default class Results {
         clearInterval(timer);
         music;
         this.cloneScoreList = this.scoreList.cloneNode(true);
-        this.victoryOverlay.insertBefore(this.cloneScoreList, this.victoryOverlay.children[1]);
         this.victoryOverlay.classList.add('overlay-text--visible');
+        if(this.victoryOverlay.childNodes.length <= 5){
+             this.victoryOverlay.insertBefore(this.cloneScoreList, this.victoryOverlay.children[1]);
+        } else {
+            return;
+        }
     }
 }

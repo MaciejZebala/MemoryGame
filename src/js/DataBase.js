@@ -16,19 +16,15 @@ export default class DataBase{
         };
         this.totalClick = totalClick;
         this.timeRemainig = timeRemainig;
-
         this.firebase = firebase;
         if (!this.firebase.apps.length) {
             this.firebase.initializeApp(this.firebaseConfig)
         }
         this.dataBase = this.firebase.firestore();
         this.nickName = document.getElementById('nickname');
-
         this.nickPodium = [...document.querySelectorAll('.score-list__nick')];
         this.scorePodium = [...document.querySelectorAll('.score-list__points')];
-    
         this.scoreList = document.querySelector('.score-list');
-
         this.podiumTable =[]
 
     }
@@ -43,7 +39,7 @@ export default class DataBase{
     }
 
     getData(){
-        
+
         this.dataBase.collection('scores')
             .orderBy('score', "desc")
                 .get()

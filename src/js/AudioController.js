@@ -11,7 +11,6 @@ export default class AudioController{
        this.gameOverMusic = new Audio(gameOver);
        this.matchMusic = new Audio(match);
        this.victoryMusic = new Audio(victory);
-
        this.bgMusic.volume = 0.1;
     }
 
