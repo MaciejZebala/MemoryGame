@@ -97,7 +97,7 @@ export default class Game {
             if(this.totalClick === 0){
                 this.results.gameOverFunction(this.timerCountdown, this.audio.gameOver());
             }
-            if (this.match.matchedCards.length === this.cards.length) {
+            if (this.match.matchedCards.length === this.cards.length && this.timeRemainig > 0) {
                 this.results.victoryFunction(this.timerCountdown, this.audio.victory())
                 this.data.showNickName();
             }
