@@ -1,6 +1,6 @@
 # MemoryGame
 
-Simple MemoryGame with ranking
+MemoryGame with ranking
 
 ## Demo
 
