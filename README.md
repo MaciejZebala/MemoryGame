@@ -1,6 +1,6 @@
 # MemoryGame
 
-MemoryGame with ranking
+MemoryGame with ranking based on firebase
 
 ## Demo
 
